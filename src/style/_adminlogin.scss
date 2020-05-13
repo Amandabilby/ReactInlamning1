@@ -1,0 +1,29 @@
+.button {
+    border: pink;
+}
+
+.Login {
+position: absolute;
+left: 40%;
+text-align: center;
+top: 20%;
+background-color: #fbf0f0;
+border: 2px solid #b8b0b0;
+padding: 2rem;
+}
+
+.loggedIn {
+    position: relative;
+    text-align: center;
+    background-color: #fbf0f0;
+    margin: 5rem;
+    padding: 2rem;
+    text-align: center;
+    border: 2px solid #b8b0b0;
+}
+
+.notLoggedIn {
+    font-size: 10px;
+    font-style: italic;
+}
+
