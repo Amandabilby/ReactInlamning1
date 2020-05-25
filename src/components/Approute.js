@@ -14,6 +14,9 @@ import Booking from "./Booking";
 import Footer from "./Footer";
 import Logoutt from "./Logoutt";
 import NewProduct from "./NewProduct";
+import FirebaseTest from "./FirebaseTest";
+import UserPage from "./AuthUser/UserPage";
+import UserProfile from "./AuthUser/UserProfile";
 
 // import Apitest from "./Apitest";
 
@@ -35,7 +38,12 @@ const Approute = ()=>{
                     <Route path="/adminsida" exact component={AdminSida}></Route>
                     <Route path="/booking" exact component={Booking}></Route>
                     <Route path="/Logoutt" exact component={Logoutt}></Route>
+                    <Route path="/userprofile" exact component={UserProfile}></Route>
+
                     <Route path="/NewProduct" exact component={NewProduct}></Route>
+                    <Route path="/FirebaseTest" exact component={FirebaseTest}></Route>
+                    <Route path="/userpage" exact component= {UserPage}></Route>
+
 
                      <Footer/>
                     
