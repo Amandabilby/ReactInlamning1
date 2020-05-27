@@ -1,19 +1,39 @@
 
-// register / login
-// conditional rendering
-// state
- 
 import React, {Component} from "react";
 import firebase from "../FirebaseConfig";
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+
+import UserProfile from "./UserProfile";
  
  
 class UserLogin extends Component {
  
-//via props
  state= {
      condition:true,
      user:""
  }
+
+ uiConfig = {
+    // Popup signin flow rather than redirect flow.
+    signInFlow: 'popup',
+    // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
+    signInSuccessUrl:'/userprofile',
+    // We will display Google and Facebook as auth providers.
+    signInOptions: [
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+      firebase.auth.TwitterAuthProvider.PROVIDER_ID, 
+      firebase.auth.PhoneAuthProvider.PROVIDER_ID
+    ]
+  };
+
+  componentDidMount(){
+    firebase.auth().onAuthStateChanged((user)=>{
+       this.setState({user:user.email}) 
+       console.log(user);
+    })
+    //skicka data till parent
+}
  onClickRegister(){
      this.setState({condition:false})
  }
@@ -87,17 +107,20 @@ e.preventDefault();
 
     render(){
         return(
-            <div>
+            <div className={"userlogin"}>
              
  
          {this.state.condition  &&
          <div>
-            <h2>Login</h2>
+            <h2>Välkommen! Logga in</h2>
          <form   onSubmit={this.onSubmitLogin.bind(this)}>
-                    <input type="email"   name="email"/>
-                    <input type="password" name="password" />
-                    <button>Login</button>
+                   E-mail: <input type="email"   name="email"/> <br/>
+                  Lösenord:  <input type="password" name="password" /><br/>
+                    <button className={"btn"}>Logga in</button>
                 </form>
+
+                <h4>Eller logga in via..</h4>
+        <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
                  </div>
                
                 }
@@ -106,22 +129,35 @@ e.preventDefault();
            {!this.state.condition &&
  
            <div>
-               <h2>Register</h2>
+               <h2>Ny användare</h2>
             <form onSubmit={this.onSubmitRegister.bind(this)}>
-                     <input type="text" name="username"/>
-                     <input type="email" name="email" />
-                     <input type="password" name="password" />
+                     Användarnamn: <input type="text" name="username"/><br/>
+                     Email: <input type="email" name="email" /><br/>
+                     Lösenord: <input type="password" name="password" /><br/>
  
-                    <button>Register</button>
+                    <button className={"btn"}>Registrera</button>
  
+
+                 
+
                 </form>
+                
+                <div>
+      </div>
+
+           {this.state.user? <UserProfile userData={this.state.user} /> : <div> </div>}
+
+
+
                 </div>
+
+                
                
                 }
  
 {/* <button onClick={this.onClickRegister.bind(this)}>Don't have an account?</button> */}
-<button onClick={this.onClickLogin.bind(this)}>Login</button>
-<button onClick={this.onClickRegister.bind(this)}>Register</button>
+<button className={"btn"} onClick={this.onClickLogin.bind(this)}>Logga in</button>
+<button className={"btn"} onClick={this.onClickRegister.bind(this)}>Ny medlem?</button>
                
  
             </div>

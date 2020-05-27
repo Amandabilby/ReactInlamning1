@@ -11,15 +11,38 @@ onClickSaveToFirestore(){
      
     
    docRef.set({
+
+
        name: this.props.title,
        description: this.props.description,
        price: this.props.price
 
    })
 
+   alert("Booking done!")
 
    } 
+   componentDidMount(){
+    firebase.auth()
+    .onAuthStateChanged(
+
+        user=>{ if(user) { this.setState({
+
+        user: user.email, 
+        displayName: user.displayName
+        
+        })} else {
+
+        this.setState({user: localStorage.getItem("user")})
+        } 
+
+        }
+        
+    )
+}
 render(){
+
+
     return (
         <div className={"cards"} style={{ width: "18rem" }}>
             <img src={this.props.image} className={"card-img-top"} alt={"Boka"} />
