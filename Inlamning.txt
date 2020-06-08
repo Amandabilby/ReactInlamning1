@@ -1,0 +1,15 @@
+Vad är ett CMS?
+CMS, står för Content Management System och är ett webbaserat verktyg som man använder för att strukturera och hantera content på webbplatser. Exempel på CMS verktyg är Wordpress, Magento och EpiServer. Det finns olika sorters systen med både open source och kommersiella system. 
+
+Varför heter det då ”headless” CMS?
+Huvudet kan man se som fronten på en webbsida, dvs. Webbsidans frontend. Och kroppen/”the body”, betyder baksidan, dvs webbsidans backend. Tillskillnad från traditionella CMS så sparar och hanterar man bara datan i headless CMS. Alltså sköter en headless CMS enbart innehållshanteringen. Innehållet nås via ett API och det kan presenteras på olika sätt, det är valfritt.
+
+Vad är Firebase?
+Firebase är en databas I realtid. Back-end tjänsten ger utvecklare ett API som gör att applikationsdata kan synkroniseras mellan klienter och lagras i firebase molnet. Firebase ansluter via en websocket istället för en vanlig HTTP, och blir alltså mycket snabbare. All data i databasen synkroniseras automatiskt genom en websocket, så snabbt som möjligt. Firabase skickar ny data så fort den är uppdaterad, när man ändra någon data så uppdateras det direkt.
+
+Skillnaden mellan CMS och back end as a service?
+I ett CMS verktyg kan man själv skriva innehåll för att publicera på din webbläsare, medans back end as a service kopplar databas med frontend, och hämtar alltså information ifrån en databas. Det är skillnaden.
+
+Vilket sammanhang ska man använda headless cms och vanlig cms? 
+En vanlig CMS kan vara bra om man till exempel har ett team med php experter som har erfarenhet av att arbeta med cms. Fördelarna med en cms är bland annat att man kan ha ett genomgående/generetiskt tema, en instrumentpanel för att hantera content och att man har php kod för att hämta det begärda innehållet från din databas.
+En headless sms kan vara bra om du redan har en existerande hemsida byggt på ett specifikt ramverk, tex React, och du fill snabbt integrera den med ett cms system. Det är också bra om man vill att ens content ska ladda snabbt, men man inte vill ha en allt för stor kodbas. Det kan också vara bra om man vill ha full kontroll på hur ens content kommer att visas på olika devices.
